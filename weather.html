@@ -51,7 +51,7 @@
 
         document.querySelector('form').onsubmit = () => {
             let country = document.querySelector('#country').value ;
-            fetch(`https://api.openweathermap.org/data/2.5/weather?q=${country}&APPID=f42dd81b256ad9ebb9a786501cc33cee`)
+            fetch(`https://api.openweathermap.org/data/2.5/weather?q=${country}&APPID=???`)
             .then(response => response.json())
             .then ((data)=> {
                 console.log(data)
