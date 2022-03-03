@@ -1,0 +1,69 @@
+<!DOCTYPE html >
+<html lang="en">
+    <head>
+        <title>feching data</title>
+    </head>
+
+    <style>
+        form {
+            height: 100vh;
+            display: flex;
+            flex-flow: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #country {
+            width: 40%;
+            padding: 0.5rem;
+            outline: none;
+            border: 1px solid rgb(52, 68, 204);
+            font-size: 10px;
+        }
+
+        #submit {
+            width: 100px;
+            padding: 0.5rem;
+            border: none;
+            color: white;
+            background-color: deepskyblue;
+            cursor: pointer;
+            font-size: 12px;
+        }
+
+        #submit:hover {
+            background-color: rgba(97, 83, 221, 0.541);
+            font-size: 10px;
+        }   
+    </style>
+    <body>
+        <form action="" autocomplete="off">
+            <input id="country" type="text" placeholder="country" autofocus>
+            <br>
+            <input id="submit" type="submit" value="check weather">
+            <h1></h1>
+        </form>
+
+        
+    </body>
+
+    <script>
+
+        document.querySelector('form').onsubmit = () => {
+            let country = document.querySelector('#country').value ;
+            fetch(`https://api.openweathermap.org/data/2.5/weather?q=${country}&APPID=f42dd81b256ad9ebb9a786501cc33cee`)
+            .then(response => response.json())
+            .then ((data)=> {
+                console.log(data)
+                document.querySelector('h1').innerHTML = 'the temperature is '+data.weather[0].description ;
+            })
+
+            .catch(error => console.log('Error : ' , error));
+
+            return false;
+        }
+        
+
+
+    </script>
+</html>
